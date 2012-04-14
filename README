@@ -1,0 +1,14 @@
+git hook scripts
+
+git hogehogeを叩くと、
+.git/hooks/pre-hogehogeが呼び出される
+
+.git以下はgit管理下にできないので、以下のようにgit管理下の外部スクリプトを呼ぶとよい
+.git/hooks/pre-hogehogeに、
+
+# .git/hooks/pre-hogehoge
+git_root=`git rev-parse --show-toplevel`
+hook_root="$git_root/script/hooks"
+commit_hook="$hook_root/pre-commit.sh"
+
+sh $commit_hook
