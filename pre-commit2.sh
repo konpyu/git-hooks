@@ -1,7 +1,10 @@
 #!/bin/bash
 
-NG_WORDS=(mstg gdev gwdev)
-TGT_EXT=(html sub css js erb)
+# git pre-commit hook
+
+# rewrite these array
+NG_WORDS=(foo fuga hoge)
+TGT_EXT=(html css js)
 
 ngword_err_flg=0
 
@@ -25,7 +28,9 @@ do
 done
 
 if [ ${ngword_err_flg} = 1 ]; then
-    echo "* commit-blocking ngword is detected on your commit. aborted commit."
+    echo "* error : ngword is detected"
+    echo "* commit-blocking ngword is detected on your commit."
+    echo "* please remove this part to commit."
     exit 1
 else
     exit 0
